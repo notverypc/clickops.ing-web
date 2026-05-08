@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const POSTS_DIR = path.join(__dirname, 'posts');
+const POSTS_DIR = path.join(__dirname, '_posts');
 const OUTPUT_FILE = path.join(__dirname, 'rss.xml');
 const BASE_URL = process.env.BASE_URL || 'https://your-blog-url.example/';
 const SITE_TITLE = 'Simple Blog';

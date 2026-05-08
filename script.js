@@ -166,7 +166,7 @@ function parseFrontmatter(markdown) {
 }
 
 async function fetchMarkdownPost(slug) {
-  const response = await fetch(`posts/${slug}.md`);
+  const response = await fetch(`_posts/${slug}.md`);
   if (!response.ok) {
     throw new Error('Markdown file not found');
   }
