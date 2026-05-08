@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Post</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="alternate" type="application/rss+xml" href="rss.xml" title="Simple Blog RSS Feed" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Simple Blog</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#latest-posts">Posts</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">Dark mode</button>
+    </div>
+  </header>
+
+  <main class="container post-page">
+    <article class="post-detail" id="postDetail"></article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Back to the blog homepage to read more posts. <a href="rss.xml">RSS feed</a></p>
+    </div>
+  </footer>
+
+  <script src="posts.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

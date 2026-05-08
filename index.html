@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Blog</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="alternate" type="application/rss+xml" href="rss.xml" title="Simple Blog RSS Feed" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Simple Blog</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#latest-posts">Posts</a>
+        <a href="#about">About</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">Dark mode</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div>
+        <p class="eyebrow">A friendly publishing space</p>
+        <h1>Write, share, and explore short stories, guides, and insights.</h1>
+        <p class="lead">A simple blog template built with plain HTML, CSS, and JavaScript. Add your own posts, customize the theme, and launch fast.</p>
+      </div>
+      <div class="hero-card">
+        <h2>Featured</h2>
+        <p>Keep your writing clean, readable, and beautiful with a modern static blog layout.</p>
+      </div>
+    </section>
+
+    <section class="container latest-posts" id="latest-posts">
+      <div class="section-heading">
+        <h2>Latest posts</h2>
+        <p>Explore recent articles and tutorials from the blog.</p>
+      </div>
+      <div class="posts-grid" id="postsGrid"></div>
+    </section>
+
+    <section class="container about" id="about">
+      <div class="about-card">
+        <h2>About this blog</h2>
+        <p>This site is built to be easy to edit. Add new posts to <code>posts.js</code>, customize the layout in <code>styles.css</code>, and open <code>index.html</code> in your browser.</p>
+        <p>Use a local static server for the best experience, or deploy anywhere that serves plain HTML files.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Made with minimal code. Use this as a starting point for your own blog. <a href="rss.xml">RSS feed</a></p>
+    </div>
+  </footer>
+
+  <script src="posts.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
