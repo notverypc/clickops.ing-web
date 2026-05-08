@@ -33,3 +33,5 @@ A lightweight static blog template built with HTML, CSS, and JavaScript.
 
 ## RSS Feeds
 BASE_URL=<https://your-site.com/> node generate-rss.js
+
+## Simple Change
