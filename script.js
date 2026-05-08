@@ -20,18 +20,26 @@ function renderPosts() {
   if (!container || !window.blogPosts) return;
   container.innerHTML = '<p class="loading-message">Loading posts…</p>';
 
-  const postsWithMeta = window.blogPosts.map(post => {
-    const excerpt = post.excerpt || getExcerptFromContent(post.content) || '';
-    return {
-      ...post,
-      excerpt
-    };
-  });
-
-  container.innerHTML = '';
-  postsWithMeta.forEach(post => {
-    container.appendChild(createPostCard(post));
-  });
+  Promise.all(window.blogPosts.map(async post => {
+    try {
+      const { metadata, content } = await fetchMarkdownPost(post.slug);
+      const excerpt = metadata.excerpt || metadata.description || getExcerptFromContent(content) || post.excerpt || '';
+      return {
+        ...post,
+        ...metadata,
+        excerpt,
+        content
+      };
+    } catch {
+      return post;
+    }
+  }))
+    .then(postsWithMeta => {
+      container.innerHTML = '';
+      postsWithMeta.forEach(post => {
+        container.appendChild(createPostCard(post));
+      });
+    });
 }
 
 function getQueryParam(name) {
@@ -137,6 +145,40 @@ function getExcerptFromContent(content) {
     .trim();
 }
 
+function parseFrontmatter(markdown) {
+  const match = markdown.match(/^---\s*\n([\s\S]*?)\n---\s*\n?/);
+  if (!match) {
+    return { metadata: {}, content: markdown };
+  }
+
+  const raw = match[1];
+  const content = markdown.slice(match[0].length);
+  const metadata = {};
+
+  raw.split(/\r?\n/).forEach(line => {
+    const [key, ...rest] = line.split(':');
+    if (!key) return;
+    const value = rest.join(':').trim();
+    metadata[key.trim()] = value;
+  });
+
+  return { metadata, content };
+}
+
+async function fetchMarkdownPost(slug) {
+  const response = await fetch(`posts/${slug}.md`);
+  if (!response.ok) {
+    throw new Error('Markdown file not found');
+  }
+  const markdown = await response.text();
+  return parseFrontmatter(markdown);
+}
+
+async function loadMarkdownContent(slug) {
+  const { metadata, content } = await fetchMarkdownPost(slug);
+  return { html: markdownToHtml(content), metadata };
+}
+
 async function renderPostDetail() {
   const detail = document.getElementById('postDetail');
   if (!detail || !window.blogPosts) return;
@@ -162,11 +204,45 @@ async function renderPostDetail() {
       <p class="post-meta">By ${post.author} · ${post.date}</p>
       <p class="post-subtitle">${post.subtitle}</p>
     </header>
-    <section class="post-content">${markdownToHtml(post.content)}</section>
+    <section class="post-content" id="postContent">
+      <p>Loading post...</p>
+    </section>
     <div class="post-actions">
       <a class="button button-secondary" href="index.html">Back to posts</a>
     </div>
   `;
+
+  try {
+    const { html, metadata } = await loadMarkdownContent(post.slug);
+    const contentSection = document.getElementById('postContent');
+
+    const merged = {
+      ...post,
+      title: metadata.title || post.title,
+      subtitle: metadata.subtitle || post.subtitle,
+      author: metadata.author || post.author,
+      date: metadata.date || post.date,
+      category: metadata.category || post.category
+    };
+
+    detail.innerHTML = `
+      <header class="post-header">
+        <p class="post-category">${merged.category}</p>
+        <h1>${merged.title}</h1>
+        <p class="post-meta">By ${merged.author} · ${merged.date}</p>
+        <p class="post-subtitle">${merged.subtitle}</p>
+      </header>
+      <section class="post-content">${html}</section>
+      <div class="post-actions">
+        <a class="button button-secondary" href="index.html">Back to posts</a>
+      </div>
+    `;
+  } catch (error) {
+    const contentSection = document.getElementById('postContent');
+    if (contentSection) {
+      contentSection.innerHTML = '<p>Sorry, there was a problem loading this post.</p>';
+    }
+  }
 }
 
 function applyTheme(theme) {
