@@ -1,0 +1,11 @@
+title: clickops.ing
+description: A blog about web development and technology
+theme: jekyll-theme-primer
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-relative-links
+
+markdown: GFM
+permalink: /posts/:title/
