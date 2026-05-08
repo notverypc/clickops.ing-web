@@ -129,6 +129,22 @@ function markdownToHtml(markdown) {
   return html.join('');
 }
 
+function getExcerptFromContent(content) {
+  const paragraphs = content
+    .split(/\n\s*\n/)
+    .map(item => item.trim())
+    .filter(Boolean);
+
+  if (!paragraphs.length) return '';
+
+  return paragraphs[0]
+    .replace(/^#{1,6}\s*/, '')
+    .replace(/^>\s*/, '')
+    .replace(/^[-*+]\s*/, '')
+    .replace(/[`*_]+/g, '')
+    .trim();
+}
+
 function parseFrontmatter(markdown) {
   const match = markdown.match(/^---\s*\n([\s\S]*?)\n---\s*\n?/);
   if (!match) {
@@ -156,22 +172,6 @@ async function fetchMarkdownPost(slug) {
   }
   const markdown = await response.text();
   return parseFrontmatter(markdown);
-}
-
-function getExcerptFromContent(content) {
-  const paragraphs = content
-    .split(/\n\s*\n/)
-    .map(item => item.trim())
-    .filter(Boolean);
-
-  if (!paragraphs.length) return '';
-
-  return paragraphs[0]
-    .replace(/^#{1,6}\s*/, '')
-    .replace(/^>\s*/, '')
-    .replace(/^[-*+]\s*/, '')
-    .replace(/[`*_]+/g, '')
-    .trim();
 }
 
 async function loadMarkdownContent(slug) {

@@ -10,10 +10,14 @@ A lightweight static blog template built with HTML, CSS, and JavaScript.
 - `posts.js` — sample blog post data
 
 ## Run locally
-1. Open `index.html` directly in your browser.
-2. Or use a static server for better results, for example:
-   - `python3 -m http.server 8000`
-   - then visit `http://localhost:8000`
+**Important:** This blog requires a local static server to work properly. Opening `index.html` directly in your browser won't load the Markdown posts due to browser security restrictions.
+
+1. Use a static server:
+   - `python3 -m http.server 8000` (Python 3)
+   - `python -m SimpleHTTPServer 8000` (Python 2)
+   - Or use any static file server (nginx, Apache, etc.)
+
+2. Visit `http://localhost:8000` in your browser.
 
 ## Customize
 - Add or edit post metadata in `posts.js`
