@@ -166,11 +166,18 @@ function parseFrontmatter(markdown) {
 }
 
 async function fetchMarkdownPost(slug) {
-  const response = await fetch(`_posts/${slug}.md`);
+  if (!slug) {
+    throw new Error('Post slug is required');
+  }
+  const filePath = `_posts/${slug}.md`;
+  const response = await fetch(filePath);
   if (!response.ok) {
-    throw new Error('Markdown file not found');
+    throw new Error(`Failed to load post: ${filePath} (HTTP ${response.status})`);
   }
   const markdown = await response.text();
+  if (!markdown || markdown.trim() === '') {
+    throw new Error(`Post file is empty: ${filePath}`);
+  }
   return parseFrontmatter(markdown);
 }
 
@@ -238,10 +245,15 @@ async function renderPostDetail() {
       </div>
     `;
   } catch (error) {
-    const contentSection = document.getElementById('postContent');
-    if (contentSection) {
-      contentSection.innerHTML = '<p>Sorry, there was a problem loading this post.</p>';
-    }
+    console.error('Error loading post:', error);
+    detail.innerHTML = `
+      <div class="post-not-found">
+        <h1>Error loading post</h1>
+        <p>Sorry, there was a problem loading this post. The file may not exist or there was a network error.</p>
+        <p><small>Details: ${escapeHtml(error?.message || 'Unknown error')}</small></p>
+        <p><a href="index.html" class="button button-secondary">Back to posts</a></p>
+      </div>
+    `;
   }
 }
 
@@ -285,6 +297,15 @@ function initPage() {
     renderPosts();
   }
 }
+
+// Global error handlers for debugging
+window.addEventListener('error', (event) => {
+  console.error('Uncaught error:', event.error);
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+  console.error('Unhandled promise rejection:', event.reason);
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
