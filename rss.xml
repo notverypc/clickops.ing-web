@@ -2,33 +2,41 @@
 <rss version="2.0">
 <channel>
   <title>Simple Blog</title>
-  <link>https://your-blog-url.example/</link>
+  <link>https://clickops.ing/</link>
   <description>A lightweight static blog template built with HTML, CSS, and Markdown posts.</description>
   <language>en-US</language>
-  <lastBuildDate>Fri, 08 May 2026 14:22:11 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 23 Jun 2026 16:00:43 GMT</lastBuildDate>
   <item>
     <title>How to Start a Blog in 2026</title>
-    <link>https://your-blog-url.example/post.html?slug=how-to-start-a-blog</link>
-    <guid>https://your-blog-url.example/post.html?slug=how-to-start-a-blog</guid>
+    <link>https://clickops.ing/post.html?slug=how-to-start-a-blog</link>
+    <guid>https://clickops.ing/post.html?slug=how-to-start-a-blog</guid>
     <description>Build your blog with plain HTML, CSS, and JavaScript while keeping the design clean and mobile-friendly.</description>
-    <pubDate>Thu, 07 May 2026 23:00:00 GMT</pubDate>
+    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
     <category>Writing</category>
   </item>
   <item>
     <title>Design Tips for Better Readability</title>
-    <link>https://your-blog-url.example/post.html?slug=design-tips-for-better-readability</link>
-    <guid>https://your-blog-url.example/post.html?slug=design-tips-for-better-readability</guid>
+    <link>https://clickops.ing/post.html?slug=design-tips-for-better-readability</link>
+    <guid>https://clickops.ing/post.html?slug=design-tips-for-better-readability</guid>
     <description>Good typography and spacing help readers focus on your ideas instead of getting lost in the page.</description>
-    <pubDate>Tue, 05 May 2026 23:00:00 GMT</pubDate>
+    <pubDate>Wed, 06 May 2026 00:00:00 GMT</pubDate>
     <category>Design</category>
   </item>
   <item>
     <title>Deploy a Static Blog Quickly</title>
-    <link>https://your-blog-url.example/post.html?slug=deploy-a-static-blog-quickly</link>
-    <guid>https://your-blog-url.example/post.html?slug=deploy-a-static-blog-quickly</guid>
+    <link>https://clickops.ing/post.html?slug=deploy-a-static-blog-quickly</link>
+    <guid>https://clickops.ing/post.html?slug=deploy-a-static-blog-quickly</guid>
     <description>Publish your blog on GitHub Pages, Netlify, or any static host in minutes.</description>
-    <pubDate>Sun, 03 May 2026 23:00:00 GMT</pubDate>
+    <pubDate>Mon, 04 May 2026 00:00:00 GMT</pubDate>
     <category>Deployment</category>
+  </item>
+  <item>
+    <title>First Non-AI Post</title>
+    <link>https://clickops.ing/post.html?slug=first-non-ai-post</link>
+    <guid>https://clickops.ing/post.html?slug=first-non-ai-post</guid>
+    <description>Non-AI.</description>
+    <pubDate>Tue, 23 Jun 2026 16:00:43 GMT</pubDate>
+    <category>Category Name</category>
   </item>
 </channel>
 </rss>
