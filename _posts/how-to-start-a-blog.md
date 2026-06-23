@@ -2,7 +2,7 @@
 title: How to Start a Blog in 2026
 subtitle: A simple, step-by-step guide for publishing your first post.
 author: Ava Morgan
-date: May 8, 2026
+date: 2026-05-08
 category: Writing
 excerpt: Build your blog with plain HTML, CSS, and JavaScript while keeping the design clean and mobile-friendly.
 ---

@@ -2,7 +2,7 @@
 title: Design Tips for Better Readability
 subtitle: Small improvements that make your text easier to scan.
 author: Noah Patel
-date: May 6, 2026
+date: 2026-05-06
 category: Design
 excerpt: Good typography and spacing help readers focus on your ideas instead of getting lost in the page.
 ---

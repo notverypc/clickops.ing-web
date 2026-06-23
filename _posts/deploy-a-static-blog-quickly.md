@@ -2,7 +2,7 @@
 title: Deploy a Static Blog Quickly
 subtitle: Fast hosting options for your first website.
 author: Mia Lee
-date: May 4, 2026
+date: 2026-05-04
 category: Deployment
 excerpt: Publish your blog on GitHub Pages, Netlify, or any static host in minutes.
 ---
