@@ -20,9 +20,9 @@ A lightweight static blog template built with HTML, CSS, and JavaScript.
 2. Visit `http://localhost:8000` in your browser.
 
 ## Customize
-- Add or edit post metadata in `posts.js`
-- Write post content in markdown files inside `posts/`
-- Use `posts/post-template.md` as a starting point for new posts
+- Add new posts as markdown files inside `_posts/` using `_templates/post-template.md` as a starting point
+- Run `node generate-posts.js` to rebuild `posts.js` from your markdown files
+- Write post content in markdown files inside `_posts/`
 - Add frontmatter metadata to each markdown post using the `---` block at the top
 - Add or update `excerpt:` in post frontmatter to automatically generate preview text
 - Generate the RSS feed with `node generate-rss.js` after updating posts
