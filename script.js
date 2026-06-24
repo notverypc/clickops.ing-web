@@ -1,8 +1,8 @@
-const themeToggle = document.getElementById('themeToggle');
+const themeToggle = document.getElementById("themeToggle");
 
 function createPostCard(post) {
-  const card = document.createElement('article');
-  card.className = 'post-card';
+  const card = document.createElement("article");
+  card.className = "post-card";
   card.innerHTML = `
     <div class="post-meta">
       <span class="post-category">${post.category}</span>
@@ -16,30 +16,38 @@ function createPostCard(post) {
 }
 
 function renderPosts() {
-  const container = document.getElementById('postsGrid');
+  const container = document.getElementById("postsGrid");
   if (!container || !window.blogPosts) return;
   container.innerHTML = '<p class="loading-message">Loading posts…</p>';
 
-  Promise.all(window.blogPosts.map(async post => {
-    try {
-      const { metadata, content } = await fetchMarkdownPost(post.slug);
-      const excerpt = metadata.excerpt || metadata.description || getExcerptFromContent(content) || post.excerpt || '';
-      return {
-        ...post,
-        ...metadata,
-        excerpt,
-        content
-      };
-    } catch {
-      return post;
-    }
-  }))
-    .then(postsWithMeta => {
-      container.innerHTML = '';
-      postsWithMeta.forEach(post => {
+  Promise.all(
+    window.blogPosts.map(async (post) => {
+      try {
+        const { metadata, content } = await fetchMarkdownPost(post.slug);
+        const excerpt =
+          metadata.excerpt ||
+          metadata.description ||
+          getExcerptFromContent(content) ||
+          post.excerpt ||
+          "";
+        return {
+          ...post,
+          ...metadata,
+          excerpt,
+          content,
+        };
+      } catch {
+        return post;
+      }
+    }),
+  ).then((postsWithMeta) => {
+    container.innerHTML = "";
+    postsWithMeta
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .forEach((post) => {
         container.appendChild(createPostCard(post));
       });
-    });
+  });
 }
 
 function getQueryParam(name) {
@@ -48,28 +56,28 @@ function getQueryParam(name) {
 }
 
 function escapeHtml(text) {
-  return text.replace(/[&<>\"]+/g, match => {
-    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' };
+  return text.replace(/[&<>\"]+/g, (match) => {
+    const map = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" };
     return map[match] || match;
   });
 }
 
 function renderInlineMarkdown(text) {
   return escapeHtml(text)
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*(.*?)\*/g, "<em>$1</em>")
     .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>');
 }
 
 function markdownToHtml(markdown) {
-  const lines = markdown.split('\n');
+  const lines = markdown.split("\n");
   const html = [];
   let listOpen = false;
   let codeOpen = false;
 
   const closeList = () => {
     if (listOpen) {
-      html.push('</ul>');
+      html.push("</ul>");
       listOpen = false;
     }
   };
@@ -77,17 +85,17 @@ function markdownToHtml(markdown) {
   for (let rawLine of lines) {
     const line = rawLine.trim();
 
-    if (line === '') {
+    if (line === "") {
       closeList();
-      if (!codeOpen) html.push('');
+      if (!codeOpen) html.push("");
       continue;
     }
 
-    if (line.startsWith('```')) {
+    if (line.startsWith("```")) {
       if (codeOpen) {
-        html.push('</code></pre>');
+        html.push("</code></pre>");
       } else {
-        html.push('<pre><code>');
+        html.push("<pre><code>");
       }
       codeOpen = !codeOpen;
       continue;
@@ -108,16 +116,20 @@ function markdownToHtml(markdown) {
 
     if (/^> /.test(line)) {
       closeList();
-      html.push(`<blockquote>${renderInlineMarkdown(line.slice(2).trim())}</blockquote>`);
+      html.push(
+        `<blockquote>${renderInlineMarkdown(line.slice(2).trim())}</blockquote>`,
+      );
       continue;
     }
 
     if (/^[-*+]\s+/.test(line)) {
       if (!listOpen) {
-        html.push('<ul>');
+        html.push("<ul>");
         listOpen = true;
       }
-      html.push(`<li>${renderInlineMarkdown(line.replace(/^[-*+]\s+/, '').trim())}</li>`);
+      html.push(
+        `<li>${renderInlineMarkdown(line.replace(/^[-*+]\s+/, "").trim())}</li>`,
+      );
       continue;
     }
 
@@ -126,22 +138,22 @@ function markdownToHtml(markdown) {
   }
 
   closeList();
-  return html.join('');
+  return html.join("");
 }
 
 function getExcerptFromContent(content) {
   const paragraphs = content
     .split(/\n\s*\n/)
-    .map(item => item.trim())
+    .map((item) => item.trim())
     .filter(Boolean);
 
-  if (!paragraphs.length) return '';
+  if (!paragraphs.length) return "";
 
   return paragraphs[0]
-    .replace(/^#{1,6}\s*/, '')
-    .replace(/^>\s*/, '')
-    .replace(/^[-*+]\s*/, '')
-    .replace(/[`*_]+/g, '')
+    .replace(/^#{1,6}\s*/, "")
+    .replace(/^>\s*/, "")
+    .replace(/^[-*+]\s*/, "")
+    .replace(/[`*_]+/g, "")
     .trim();
 }
 
@@ -155,10 +167,10 @@ function parseFrontmatter(markdown) {
   const content = markdown.slice(match[0].length);
   const metadata = {};
 
-  raw.split(/\r?\n/).forEach(line => {
-    const [key, ...rest] = line.split(':');
+  raw.split(/\r?\n/).forEach((line) => {
+    const [key, ...rest] = line.split(":");
     if (!key) return;
-    const value = rest.join(':').trim();
+    const value = rest.join(":").trim();
     metadata[key.trim()] = value;
   });
 
@@ -167,15 +179,17 @@ function parseFrontmatter(markdown) {
 
 async function fetchMarkdownPost(slug) {
   if (!slug) {
-    throw new Error('Post slug is required');
+    throw new Error("Post slug is required");
   }
   const filePath = `_posts/${slug}.md`;
   const response = await fetch(filePath);
   if (!response.ok) {
-    throw new Error(`Failed to load post: ${filePath} (HTTP ${response.status})`);
+    throw new Error(
+      `Failed to load post: ${filePath} (HTTP ${response.status})`,
+    );
   }
   const markdown = await response.text();
-  if (!markdown || markdown.trim() === '') {
+  if (!markdown || markdown.trim() === "") {
     throw new Error(`Post file is empty: ${filePath}`);
   }
   return parseFrontmatter(markdown);
@@ -187,12 +201,14 @@ async function loadMarkdownContent(slug) {
 }
 
 async function renderPostDetail() {
-  const detail = document.getElementById('postDetail');
+  const detail = document.getElementById("postDetail");
   if (!detail || !window.blogPosts) return;
 
-  const slug = getQueryParam('slug');
-  const id = Number(getQueryParam('id'));
-  const post = window.blogPosts.find(item => item.slug === slug) || window.blogPosts.find(item => item.id === id);
+  const slug = getQueryParam("slug");
+  const id = Number(getQueryParam("id"));
+  const post =
+    window.blogPosts.find((item) => item.slug === slug) ||
+    window.blogPosts.find((item) => item.id === id);
 
   if (!post) {
     detail.innerHTML = `
@@ -221,7 +237,7 @@ async function renderPostDetail() {
 
   try {
     const { html, metadata } = await loadMarkdownContent(post.slug);
-    const contentSection = document.getElementById('postContent');
+    const contentSection = document.getElementById("postContent");
 
     const merged = {
       ...post,
@@ -229,7 +245,7 @@ async function renderPostDetail() {
       subtitle: metadata.subtitle || post.subtitle,
       author: metadata.author || post.author,
       date: metadata.date || post.date,
-      category: metadata.category || post.category
+      category: metadata.category || post.category,
     };
 
     detail.innerHTML = `
@@ -245,12 +261,12 @@ async function renderPostDetail() {
       </div>
     `;
   } catch (error) {
-    console.error('Error loading post:', error);
+    console.error("Error loading post:", error);
     detail.innerHTML = `
       <div class="post-not-found">
         <h1>Error loading post</h1>
         <p>Sorry, there was a problem loading this post. The file may not exist or there was a network error.</p>
-        <p><small>Details: ${escapeHtml(error?.message || 'Unknown error')}</small></p>
+        <p><small>Details: ${escapeHtml(error?.message || "Unknown error")}</small></p>
         <p><a href="index.html" class="button button-secondary">Back to posts</a></p>
       </div>
     `;
@@ -259,39 +275,39 @@ async function renderPostDetail() {
 
 function applyTheme(theme) {
   const body = document.body;
-  if (theme === 'dark') {
-    body.classList.add('dark');
+  if (theme === "dark") {
+    body.classList.add("dark");
   } else {
-    body.classList.remove('dark');
+    body.classList.remove("dark");
   }
 
   if (themeToggle) {
-    themeToggle.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
+    themeToggle.textContent = theme === "dark" ? "Light mode" : "Dark mode";
   }
 }
 
 function loadTheme() {
-  const storedTheme = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+  const storedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const theme = storedTheme || (prefersDark ? "dark" : "light");
   applyTheme(theme);
 }
 
 function toggleTheme() {
-  const isDark = document.body.classList.contains('dark');
-  const nextTheme = isDark ? 'light' : 'dark';
-  localStorage.setItem('theme', nextTheme);
+  const isDark = document.body.classList.contains("dark");
+  const nextTheme = isDark ? "light" : "dark";
+  localStorage.setItem("theme", nextTheme);
   applyTheme(nextTheme);
 }
 
 function initThemeToggle() {
   if (!themeToggle) return;
-  themeToggle.addEventListener('click', toggleTheme);
+  themeToggle.addEventListener("click", toggleTheme);
   loadTheme();
 }
 
 function initPage() {
-  if (window.location.pathname.endsWith('post.html')) {
+  if (window.location.pathname.endsWith("post.html")) {
     renderPostDetail();
   } else {
     renderPosts();
@@ -299,15 +315,15 @@ function initPage() {
 }
 
 // Global error handlers for debugging
-window.addEventListener('error', (event) => {
-  console.error('Uncaught error:', event.error);
+window.addEventListener("error", (event) => {
+  console.error("Uncaught error:", event.error);
 });
 
-window.addEventListener('unhandledrejection', (event) => {
-  console.error('Unhandled promise rejection:', event.reason);
+window.addEventListener("unhandledrejection", (event) => {
+  console.error("Unhandled promise rejection:", event.reason);
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   initThemeToggle();
   initPage();
 });
