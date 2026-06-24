@@ -2,7 +2,7 @@
 title: First Non-AI Post
 subtitle: Just a hello world post.
 author: notverypc
-date: 2026-06-34
+date: 2026-06-23
 category: Category Name
 excerpt: Non-AI.
 ---
