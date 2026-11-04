@@ -1,37 +1,31 @@
-# Simple Blog Site
+# clickops.ing
 
-A lightweight static blog template built with HTML, CSS, and JavaScript.
+A simple blog. Each post is one Markdown file, and GitHub Pages builds the site on every push to `main`. There's nothing to install and no scripts to run.
 
-## Files
-- `index.html` — home page with a list of posts
-- `post.html` — detail page for individual posts
-- `styles.css` — responsive blog styles
-- `script.js` — renders posts and loads the detail page
-- `posts.js` — sample blog post data
+## Add a post
 
-## Run locally
-**Important:** This blog requires a local static server to work properly. Opening `index.html` directly in your browser won't load the Markdown posts due to browser security restrictions.
+1. Copy `_templates/post-template.md` to `_posts/YYYY-MM-DD-your-post-title.md`.
+2. Fill in the details at the top and write the post.
+3. Push to `main`. It goes live at `https://clickops.ing/your-post-title/` within a minute or two.
 
-1. Use a static server:
-   - `python3 -m http.server 8000` (Python 3)
-   - `python -m SimpleHTTPServer 8000` (Python 2)
-   - Or use any static file server (nginx, Apache, etc.)
+The `excerpt` is what appears on the homepage and in LinkedIn link previews.
 
-2. Visit `http://localhost:8000` in your browser.
+Posts dated in the future won't appear until that date. If a value at the top of a post contains a colon, wrap it in quotes.
 
-## Customize
-- Add new posts as markdown files inside `_posts/` using `_templates/post-template.md` as a starting point
-- Run `node generate-posts.js` to rebuild `posts.js` from your markdown files
-- Write post content in markdown files inside `_posts/`
-- Add frontmatter metadata to each markdown post using the `---` block at the top
-- Add or update `excerpt:` in post frontmatter to automatically generate preview text
-- Generate the RSS feed with `node generate-rss.js` after updating posts
-  - optionally set `BASE_URL` before running, for example `BASE_URL=https://example.com/ node generate-rss.js`
-- Update the layout in `styles.css`
-- Use the dark mode toggle in the header to switch themes
-- Add new pages by copying the existing templates
+## Preview locally (optional)
 
-## RSS Feeds
-BASE_URL=<https://your-site.com/> node generate-rss.js
+Needs Docker. Then open `http://localhost:4000`.
 
-## Simple Change
+```sh
+docker run --rm -it -p 4000:4000 -v "$PWD":/site -w /site ruby:3.3 \
+  sh -c "gem install github-pages webrick && jekyll serve --host 0.0.0.0"
+```
+
+## Where things are
+
+- `_posts/`: the posts
+- `_layouts/`: the page templates
+- `_config.yml`: site title and description
+- `index.html`: the homepage
+- `styles.css`: the styling, including dark and light colours
+- `script.js`: the dark mode toggle

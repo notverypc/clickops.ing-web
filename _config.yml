@@ -1,0 +1,11 @@
+title: clickops.ing
+description: A small blog by notverypc.
+url: https://clickops.ing
+permalink: /:title/
+exclude:
+  - README.md
+defaults:
+  - scope:
+      type: posts
+    values:
+      layout: post
