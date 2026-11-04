@@ -1,20 +1,17 @@
 ---
 title: Your Post Title
 subtitle: A short summary of the post.
-author: Your Name
+author: notverypc
 date: YYYY-MM-DD
 category: Category Name
-excerpt: A one- or two-sentence preview for the homepage.
+excerpt: One or two sentences. Shown on the homepage and in LinkedIn link previews.
 ---
 
-Write your blog post here using Markdown.
+Copy this file to `_posts/YYYY-MM-DD-your-post-title.md`, using the same date as above.
+The filename sets the link: `https://clickops.ing/your-post-title/`.
 
-- Use headings with `#`
-- Add lists, links, and quotes
-- Keep paragraphs short and readable
+If a value above contains a colon, wrap it in quotes:
 
-For example:
+title: "Clickops: a short history"
 
-> This is a sample quote.
-
-Write the rest of your post below.
+Write your post here using Markdown.
