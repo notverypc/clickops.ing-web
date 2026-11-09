@@ -12,6 +12,9 @@
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}" />
   <meta property="og:site_name" content="{{ site.title | escape }}" />
+  <meta property="og:image" content="{{ '/assets/images/og-image.png' | absolute_url }}" />
+  <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}" />
+  <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}" />
   <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}" />
   <script>
     // Runs before first paint so dark mode doesn't flash light.
@@ -28,7 +31,10 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <a class="brand" href="{{ '/' | relative_url }}">
+        <img class="brand-logo" src="{{ '/assets/images/logo-icon.png' | relative_url }}" alt="" width="40" height="40" />
+        <span>{{ site.title }}</span>
+      </a>
       <nav class="nav-links">
         <a href="{{ '/' | relative_url }}">Home</a>
         <a href="{{ '/#latest-posts' | relative_url }}">Posts</a>
