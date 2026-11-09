@@ -1,0 +1,20 @@
+name: Build check
+
+# Builds the site the same way GitHub Pages does, so a broken build
+# shows up on the pull request before it's merged.
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site

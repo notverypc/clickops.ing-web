@@ -4,6 +4,11 @@ url: https://clickops.ing
 permalink: /:title/
 exclude:
   - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
+  - bin
 defaults:
   - scope:
       type: posts
