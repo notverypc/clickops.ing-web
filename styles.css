@@ -296,17 +296,6 @@ pre code {
   margin-top: 1rem;
 }
 
-.site-footer {
-  border-top: 1px solid var(--border);
-  padding: 1.5rem 0;
-  background: var(--surface);
-}
-
-.site-footer p {
-  margin: 0;
-  color: var(--muted);
-}
-
 @media (max-width: 760px) {
   .header-inner {
     padding: 0.75rem 0;
