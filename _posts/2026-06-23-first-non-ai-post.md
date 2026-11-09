@@ -1,7 +1,7 @@
 ---
 title: First Non-AI Post
 subtitle: Just a hello world post.
-author: notverypc
+author: Ben
 date: 2026-06-23
 category: General
 excerpt: A simple "Hello World" post, and a project to help me understand vibe coding.

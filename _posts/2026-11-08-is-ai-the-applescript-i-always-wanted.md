@@ -1,7 +1,7 @@
 ---
 title: Is AI the AppleScript I Always Wanted?
 subtitle: Coding in natural language, finally.
-author: notverypc
+author: Ben
 date: 2026-11-08
 category: General
 excerpt: AppleScript promised coding in plain English. Years later, AI might be what finally delivers it.

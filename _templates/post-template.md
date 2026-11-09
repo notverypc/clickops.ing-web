@@ -1,7 +1,7 @@
 ---
 title: Your Post Title
 subtitle: A short summary of the post.
-author: notverypc
+author: Ben
 date: YYYY-MM-DD
 category: Category Name
 excerpt: One or two sentences. Shown on the homepage and in LinkedIn link previews.
