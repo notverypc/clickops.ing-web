@@ -383,3 +383,10 @@ pre code {
 .apps-grid {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
+
+/* App product page header */
+.app-icon-large {
+  display: block;
+  width: 96px;
+  height: 96px;
+}
