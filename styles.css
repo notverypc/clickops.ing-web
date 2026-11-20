@@ -294,6 +294,9 @@ pre code {
 
 .post-actions {
   margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .screenshots {
@@ -340,4 +343,43 @@ pre code {
   .nav-links {
     justify-content: flex-end;
   }
+}
+
+/* Apps page */
+.app-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.app-card-header h3 {
+  margin: 0 0 0.4rem;
+}
+
+.app-icon {
+  flex: none;
+  width: 64px;
+  height: 64px;
+}
+
+.app-card p {
+  margin-top: 1.25rem;
+}
+
+.app-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.app-actions .button-secondary,
+.app-actions .button-secondary:hover {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* Keep cards card-sized when there are only one or two apps */
+.apps-grid {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
