@@ -1,0 +1,13 @@
+# One entry per app. The Apps page (/apps/) is built from this list.
+# status: Beta | Coming soon | Available
+# testflight_url: optional public TestFlight link, shown while in Beta
+# app_store_url: set when the app goes live, shown when status is Available
+- name: D!stance
+  url: /distancetracker/
+  tagline: Your walking and running distances, compared with last week, month and year.
+  icon: /assets/images/distance/icon.png
+  platforms: [iPhone]
+  status: Beta
+  testflight_url:
+  app_store_url:
+  privacy_url: /distancetracker/privacy/
