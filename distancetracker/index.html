@@ -2,36 +2,50 @@
 layout: default
 title: D!stance
 permalink: /distancetracker/
-excerpt: D!stance shows how far you have walked and run, so you can compare your week, month and year. It only reads what is saved in Apple Health.
+excerpt: D!stance shows how far you have walked and run, and your steps, so you can compare your week, month and year. It only reads what is saved in Apple Health.
 ---
 <div class="container post-page">
   <article class="post-detail">
     <header class="post-header app-header">
       <img class="app-icon app-icon-large" src="{{ '/assets/images/distance/icon.png' | relative_url }}" alt="D!stance app icon" width="96" height="96" />
       <h1>D!stance</h1>
-      <p class="post-subtitle">Your walking and running distances, compared with last week, month and year.</p>
+      <p class="post-subtitle">Your walks, runs and steps, compared with last week, month and year.</p>
     </header>
     <section class="post-content">
-      <p>D!stance is a simple iPhone app that shows your walking and running distances. You can see how far you've gone this week, this month and this year, and how that compares with the week, month and year before.</p>
-      <p>Widgets put those comparisons on your Home Screen, so you can check how you're doing without opening the app.</p>
+      <p>D!stance is a simple iPhone app that shows your walking and running distances. You can see how far you've gone this week, this month and this year, and how that compares with the same point in the week, month and year before.</p>
+      <p>It counts your steps too, against a daily target you choose. Today is compared with the same day last week at the same time. Steps are kept separate and never add to your distance.</p>
+      <p>Widgets put your distance, a year of activity and today's steps on your Home Screen, so you can check how you're doing without opening the app.</p>
     </section>
     <div class="screenshots">
       <figure>
-        <img src="{{ '/assets/images/distance/summary.png' | relative_url }}" alt="The Summary screen, showing distance this week, this month and this year, each compared with the same point in the previous period." width="724" height="1568" loading="lazy">
-        <figcaption>Summary: this week, month and year against the last.</figcaption>
+        <img src="{{ '/assets/images/distance/summary.png' | relative_url }}" alt="The Summary screen, showing today's steps against the target, then distance this week and this month, each compared with the same point in the previous period." width="724" height="1573" loading="lazy">
+        <figcaption>Summary: today's steps, and this week and month against the last.</figcaption>
       </figure>
       <figure>
-        <img src="{{ '/assets/images/distance/trends.png' | relative_url }}" alt="The Trends screen, showing a bar chart of weekly distance split into walks and runs." width="724" height="1568" loading="lazy">
-        <figcaption>Trends: walks and runs over time.</figcaption>
+        <img src="{{ '/assets/images/distance/steps.png' | relative_url }}" alt="The Trends screen, showing a bar chart of total steps each month." width="724" height="1573" loading="lazy">
+        <figcaption>Trends: distance and steps over time.</figcaption>
       </figure>
       <figure>
-        <img src="{{ '/assets/images/distance/settings.png' | relative_url }}" alt="The Settings screen, with options for distance unit and the day the week starts on." width="724" height="1568" loading="lazy">
-        <figcaption>Settings: choose your distance unit and week start.</figcaption>
+        <img src="{{ '/assets/images/distance/compare.png' | relative_url }}" alt="The Compare screen, showing this month's distance against last month's, day by day." width="724" height="1573" loading="lazy">
+        <figcaption>Compare: any two periods, day by day.</figcaption>
       </figure>
     </div>
     <section class="post-content">
       <h2>Your data stays with you</h2>
       <p>D!stance only reads what is already saved in Apple Health. It never writes to Apple Health, and nothing leaves your iPhone. There are no accounts, no tracking and no ads.</p>
+
+      <h2>Help</h2>
+      <h3>My workouts aren't showing</h3>
+      <p>D!stance shows walking and running workouts saved in Apple Health, from Apple Watch, iPhone or another app. Check that it can read them in the Settings app, under Health › Data Access &amp; Devices › D!stance, and that Workouts, Walking + Running Distance and Steps are all turned on.</p>
+      <h3>A widget says "Unlock your iPhone to update"</h3>
+      <p>Apple Health can't be read while your iPhone is locked. Widgets show the last numbers D!stance saved, and if there aren't any yet they ask you to unlock. Opening the app once fills them in.</p>
+      <h3>Why don't my steps add to my distance?</h3>
+      <p>Steps are counted all day, including walking around the house, so D!stance keeps them separate. Distance only comes from walks and runs you record as workouts.</p>
+      <h3>Can I change my step target or when my week starts?</h3>
+      <p>Yes. Open D!stance, go to Settings, and change the daily step target, the distance unit or the day your week starts on.</p>
+
+      <h2>Contact</h2>
+      <p>D!stance is made by Ben. For help or feedback, you can reach me through <a href="https://github.com/notverypc">GitHub</a> or <a href="https://www.linkedin.com/in/ben-reilly-b4458bb4/">LinkedIn</a>.</p>
     </section>
     <div class="post-actions">
       <a class="button button-secondary" href="{{ '/apps/' | relative_url }}">← All apps</a>
