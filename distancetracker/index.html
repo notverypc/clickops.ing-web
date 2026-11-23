@@ -4,11 +4,13 @@ title: D!stance
 permalink: /distancetracker/
 excerpt: D!stance shows how far you have walked and run, and your steps, so you can compare your week, month and year. It only reads what is saved in Apple Health.
 ---
+{% assign app = site.data.apps | where: "url", page.url | first %}
 <div class="container post-page">
   <article class="post-detail">
     <header class="post-header app-header">
       <img class="app-icon app-icon-large" src="{{ '/assets/images/distance/icon.png' | relative_url }}" alt="D!stance app icon" width="96" height="96" />
       <h1>D!stance</h1>
+      {% if app.status %}<div class="post-meta"><span class="post-category">{{ app.status }}</span></div>{% endif %}
       <p class="post-subtitle">Your walks, runs and steps, compared with last week, month and year.</p>
     </header>
     <section class="post-content">

@@ -385,6 +385,10 @@ pre code {
 }
 
 /* App product page header */
+.app-header .post-meta {
+  margin-top: 0.75rem;
+}
+
 .app-icon-large {
   display: block;
   width: 96px;
