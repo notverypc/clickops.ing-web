@@ -3,7 +3,7 @@ title: D!stance App
 subtitle: Making the app I wanted to exist.
 author: Ben
 date: 2026-11-23
-category: General
+category: Apps
 excerpt: I wanted an app to compare how far I'd walked and run, so I made one.
 ---
 
