@@ -7,7 +7,7 @@ category: Apps
 excerpt: I wanted an app to compare how far I'd walked and run, so I made one.
 ---
 
-> "Create the things you wished existed."
+> "Create the things you wish existed."
 
 [D!stance](/distancetracker/) is an app I wanted to exist. I wanted to be able to compare how far I'd walked and run, and I wanted widgets. But most of all, I wanted an app that I'd created on my phone.
 
