@@ -12,6 +12,7 @@ excerpt: D!stance shows how far you have walked and run, and your steps, so you 
       <h1>D!stance</h1>
       {% if app.status %}<div class="post-meta"><span class="post-category">{{ app.status }}</span></div>{% endif %}
       <p class="post-subtitle">Your walks, runs and steps, compared with last week, month and year.</p>
+      {% if app.status == "Available" and app.app_store_url %}<p><a href="{{ app.app_store_url }}">Free on the App Store</a> for iPhone.</p>{% endif %}
     </header>
     <section class="post-content">
       <p>D!stance is a simple iPhone app that shows your walking and running distances. You can see how far you've gone this week, this month and this year, and how that compares with the same point in the week, month and year before.</p>
@@ -51,6 +52,7 @@ excerpt: D!stance shows how far you have walked and run, and your steps, so you 
       <p>For help or feedback, you can reach me via email:<br><a href="mailto:support@clickops.ing">support@clickops.ing</a></p>
     </section>
     <div class="post-actions">
+      {% if app.status == "Available" and app.app_store_url %}<a class="button" href="{{ app.app_store_url }}">Get it on the App Store</a>{% endif %}
       <a class="button button-secondary" href="{{ '/apps/' | relative_url }}">← All apps</a>
       <a class="button button-secondary" href="{{ '/distancetracker/privacy/' | relative_url }}">Privacy policy</a>
     </div>

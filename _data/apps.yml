@@ -7,7 +7,7 @@
   tagline: Your walking and running distances, compared with last week, month and year.
   icon: /assets/images/distance/icon.png
   platforms: [iPhone]
-  status: Beta
+  status: Available
   testflight_url:
-  app_store_url:
+  app_store_url: https://apps.apple.com/app/id6835134966
   privacy_url: /distancetracker/privacy/
